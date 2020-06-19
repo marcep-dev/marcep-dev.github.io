@@ -1,0 +1,246 @@
+/** - > SELECTOR UNIVERSAL
+Alterar o comportamento padrao do Box Model */
+*, *::before, *::after {box-sizing: border-box; }
+
+
+/**-moz-box-sizing: border-box; Para usar no mozila de 10 anos atras
+    -webkit-box-sizing: border-box; para colocar no edge de 10 anos atras */
+    
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+  }
+
+body {
+    background-image: url(../imagens/textura-fundo.png);
+    background-attachment: fixed;
+    font-family: 'Open Sans', verdana, sans-serif ;
+}
+/*Tornando as imagens responsivas*/
+img {max-width: 100%;}
+
+/*Reset em alguns elementos */
+body, h1, h2, h3, p, figure {
+    margin: 0;
+    padding: ;
+}
+
+/*FDromatando todos links 
+(sem underline, com cor preta) */
+a{
+    text-decoration: none;
+    color: black;
+}
+
+header, footer {
+    text-align: center;
+    background-color: rgba(217, 217, 217, 0.8) ;
+}
+
+header{border-bottom: solid 1px;
+margin-bottom: 10px;
+}
+
+footer {border-top: solid 1px;}
+
+/* Aula 07 */
+/* limitar o tamanho do conteudo */
+main {
+    width: 95%; 
+    margin-left: auto;/* centralizar o bloco */
+    margin-right: auto;
+    }
+
+/* p {text-align: justify;}  para justificar o texto*/
+
+article{
+    background-color: white;
+    padding: 2%;
+    margin: 10px 0;
+    box-shadow: black 1px 1px 5px;
+}
+
+h1, h2, h3, nav, button {
+    font-family: Orbitron; Verdana; sans-serif;
+    }
+/*Regra em qie e aplicado um espacamento interno para cima e para baixo*/
+h2, h3, p{ padding: 1% 0;}
+
+footer img { width: 40px;}
+
+footer h2 { font-size: 1rem;}
+
+footer p { font-size: 0.8rem;}
+
+section, figure {margin: 2% 0;}
+
+figcaption { 
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Regra provisorias para ajustes e testes */
+/*
+h1 {background-color: red;}
+h1 a { background-color: blue;}
+nav {background-color: yellow;}
+nav a {background-color: green;}
+*/
+
+/* Criar flex containers */
+
+h1, h1 a, nav, nav a, .voltar-topo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    width: 33.33%;
+    height: 55px;
+    font-size: 1.1rem;
+    
+}
+
+nav a:hover, nav a:focus {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+
+    padding: 5px 0;
+    font-size: 2.3rem;
+}
+
+h1 img { width 50 px}
+
+input, textarea {
+    width: 100%;
+    padding: 2%;
+    border: solid 2px;
+    font-size: 1.1rem;
+    
+}
+
+label{ font-weight: bold;}
+
+button {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none
+
+}
+
+button:hover, button:focus{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+.voltar-topo {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.voltar-topo a {
+    background-color: black;
+    color: white;
+    padding: 5px;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    font-size: 0.7rem;
+}
+
+}
+
+.voltar-topo a:hover,
+.voltar-topo a:focus{
+    background-color: darkblue;
+}
+
+/* Aula 08 */
+
+/* Regras para telas maiores: Media Queries/Breakpoints */
+
+
+/* Breakpoint: a parti de 700px*/
+
+@media screen and (min-width: 700px){
+    /* Colocamos uma DIV com a classe container no HTML,
+    e nela aplicamos o flex para poder posicionar
+    o logo/nome e o menu do cabeçalho lado a lado,
+    além de adequar o tamanho ao mesmo valor usado
+    no conteúdo (main) */
+
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0 auto;
+        }
+/* Ajustamos o tamanho das seções e figures
+    para um valor que permita usar o layout de
+    2 colunas */
+
+    .grupo section, .grupo figure { width: 49%;}
+
+/* Adicionamos uma DIV com a classe grupo no HTML
+    ao redor das seções e figures, e com isso usamos
+    o flex para posicionar lado a lado. */
+
+    .grupo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;}
+}
+
+
+/* Breakpoint: a parti de 850px*/
+
+@media screen and (min-width: 850px) {
+    html {font-size: 20px;}
+    .voltar-topo a {font-size: 0.7rem;}
+}
+
+/* Breakpoint: a parti de 1000px*/
+
+@media screen and (min-width: 1000px) {
+    html { font-size: 22px;}
+    h1 img { width: auto;}
+    header{
+        z-index : 10; 
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: gray;
+    }
+    /* Como o position: fixed no header fez com que ele ficasse
+    por cima do restante do conteúdo, usando a regra abaixo
+    nós conseguimos compensar esse efeito colateral criando
+    um espaçamento suficiente para evitar a sobreposição */
+
+    #topo, #o-que-fazemos, #nossas-equipes, #contato {
+        padding-top: 75px;
+    }
+
+
+    .voltar-topo {display: none;}
+/*Criamos uma limitacao quanto a largura maxima para a classe container.
+Na patrica, limitamos o conteudo do header e o conteudo main.*/
+    .container {max-width: 1000px;}
+}
+
+
+
+
+    
+
+
+
+
+
